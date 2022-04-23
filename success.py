@@ -8,5 +8,5 @@ def msg_push(title, content, key):
     except Exception as e:
         traceback.format_exc()
 if __name__ == '__main__':
-    key = 'SCT104340TzBQGIqDlk0Wp6n0BN44W3Auk'
+    key = 'SCT141777TMdanYQN2dKeDiaNAfll6FdRE'
     msg_push('今日打卡成功', '自动填写健康卡填报', key)
