@@ -17,21 +17,24 @@ def run(playwright: Playwright) -> None:
     page.fill("[placeholder=\"密码\"]", password)
     page.click("text=登 录")
     with page.expect_popup() as popup_info:
-        page.click("text=健康卡填报")
+        page.click("text=查看更多+")
     page1 = popup_info.value
-    time.sleep(5)
     with page1.expect_popup() as popup_info:
-        page1.click("text=我要办理")
+        page1.click("text=健康卡填报")
     page2 = popup_info.value
     time.sleep(5)
-    page2.click("text=为了全力做好学校新型冠状病毒感染的肺炎疫情防控工作，我承诺以下内容填写属实。 30s 已阅读并同意 >> ins")
-    page2.click("text=下一步")
-    page2.click("#hsjcsj i")
-    page2.click("td:has-text(\"14\")")
-    page2.click("text=本人承诺登记后、到校前不再前往其他地区 >> ins")
-    page2.click("button:has-text(\"提交\")")
-    page2.click("a:has-text(\"确定\")")
-    page2.close()
+    with page2.expect_popup() as popup_info:
+        page2.click("text=我要办理")
+    page3 = popup_info.value
+    time.sleep(5)
+    page3.click("text=为了全力做好学校新型冠状病毒感染的肺炎疫情防控工作，我承诺以下内容填写属实。 30s 已阅读并同意 >> ins")
+    page3.click("text=下一步")
+    page3.click("#hsjcsj i")
+    page3.click("td:has-text(\"22\")")
+    page3.click("text=本人承诺登记后、到校前不再前往其他地区 >> ins")
+    page3.click("button:has-text(\"提交\")")
+    page3.click("a:has-text(\"确定\")")
+    page3.close()
     print("Successfully!")
     # ---------------------
     context.close()
