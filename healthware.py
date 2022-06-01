@@ -14,19 +14,13 @@ def run(playwright: Playwright) -> None:
     page.goto("https://authserver.zcst.edu.cn/cas/login?service=https%3A%2F%2Fmy.zcst.edu.cn%2FportalRedirect.jsp%3F_p%3DYXM9MSZwPTEmbT1OJg__")
 
     page.locator("[placeholder=\"用户名\\/手机号\\/邮箱\"]").click()
-    page.locator("[placeholder=\"用户名\\/手机号\\/邮箱\"]").click()
-    page.locator("[placeholder=\"用户名\\/手机号\\/邮箱\"]").click()
     page.locator("[placeholder=\"用户名\\/手机号\\/邮箱\"]").fill(username)
     page.locator("[placeholder=\"密码\"]").click()
-    page.locator("[placeholder=\"密码\"]").press("CapsLock")
-    page.locator("[placeholder=\"密码\"]").fill("D")
-    page.locator("[placeholder=\"密码\"]").press("CapsLock")
     page.locator("[placeholder=\"密码\"]").fill(password)
     page.locator("[placeholder=\"密码\"]").press("Enter")
     with page.expect_popup() as popup_info:
         page.locator("text=查看更多+").click()
     page1 = popup_info.value
-    time.sleep(5)
     with page1.expect_popup() as popup_info:
         page1.locator("text=健康卡填报").click()
     page2 = popup_info.value
