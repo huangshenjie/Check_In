@@ -58,11 +58,8 @@ def run(playwright: Playwright) -> None:
         page2.locator("a:has-text(\"我要办理\")").click()
     page3 = popup_info.value
     time.sleep(5)
-    # Click text=为了全力做好学校新型冠状病毒感染的肺炎疫情防控工作，我承诺以下内容填写属实。 30s 已阅读并同意 >> ins
-    page3.locator("text=为了全力做好学校新型冠状病毒感染的肺炎疫情防控工作，我承诺以下内容填写属实。 30s 已阅读并同意 >> ins").click()
-
-    # Click text=下一步
-    page3.locator("text=下一步").click()
+    page3.click("text=为了全力做好学校新型冠状病毒感染的肺炎疫情防控工作，我承诺以下内容填写属实。 30s 已阅读并同意 >> ins")
+    page3.click("text=下一步")
 
     # Click #select2-select_pcode-container
     page3.locator("#select2-select_pcode-container").click()
@@ -87,12 +84,9 @@ def run(playwright: Playwright) -> None:
 
     # Click text=确定 >> nth=1
     page3.locator("text=确定").nth(1).click()
-
-    # Click text=本人承诺登记后、到校前不再前往其他地区 >> ins
-    page3.locator("text=本人承诺登记后、到校前不再前往其他地区 >> ins").click()
-
-    # Click button:has-text("提交")
-    page3.locator("button:has-text(\"提交\")").click()
+    page3.click("text=本人承诺登记后、到校前不再前往其他地区 >> ins")
+    page3.click("button:has-text(\"提交\")")
+    page3.click("a:has-text(\"确定\")")
 
     # Close page
     page3.close()
